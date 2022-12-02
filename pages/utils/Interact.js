@@ -1,12 +1,11 @@
-import ALCHEMY_URI from "../../ALCHEMY_URL";
-import PRIVATE_KEY from "../../PRIVATE_KEY";
 import contractABI from "./contract-abi.json";
-
+const ALCHEMY_URI = process.env.NEXT_PUBLIC_ALCHEMY_URI;
+const privateKey = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 const Web3 = require("web3");
 const Web3js = new Web3(new Web3.providers.HttpProvider(ALCHEMY_URI));
 
 // ? transferring 1 token
-const privateKey = PRIVATE_KEY;
+
 const tokenAddress = "0x4d313b8047Bbf71347cC66f1eB27A8Bae5568b38";
 const fromAddress = "0x8b65E3846BDecfD20b3a767A5C9C526B63dE6212";
 
@@ -54,14 +53,22 @@ export function sendErcToken(toAddress) {
 }
 const winnerAddress = [
   "0x517fEB9e6b5e3E55725a0C229E778CF26eE3e69D",
+  "0xD7588A0A44A992DA7dfc102DDe3EF79102bBA88e",
   "0x53c874F64F00EB609b7493eB5Db98924dd49A1dA",
-  "0x01Cc81BF74f0076043E8c57e43C425f54C90b6c6",
 ];
-
 export const bulkTransfer = () => {
-  // TODO : need set timeout of 45 sec after first transaction
-  winnerAddress.forEach((element) => {
-    // ! Bulk transfer not working for after 0th address
-    sendErcToken(element);
-  });
+  // * : need set timeout of 45 sec after first transaction
+  let i = 0;
+  setTimeout(() => {
+    // ? only run one time
+    sendErcToken(winnerAddress[i]);
+    const interval = setInterval(() => {
+      sendErcToken(winnerAddress[i]);
+      console.log("completed trx " + i);
+      i++;
+      if (i === 3) {
+        clearInterval(interval);
+      }
+    }, 35000);
+  }, 500);
 };
