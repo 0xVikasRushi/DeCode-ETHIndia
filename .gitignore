@@ -4,10 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
-
+.env
 # testing
 /coverage
-
+ALCHEMY_URL.js
+PRIVATE_URL.js
 # next.js
 /.next/
 /out/
@@ -34,3 +35,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+PRIVATE_KEY.js
