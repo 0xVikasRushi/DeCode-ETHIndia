@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { getBalance } from "./utils/Interact";
+import React from "react";
+import { useState, useEffect } from "react";
 import { useAccount } from "wagmi";
-import contractInstance from "./utils/Interact";
-import sendErcToken from "./utils/transfer";
+import { getBalance, sendErcToken, bulkTransfer } from "./utils/Interact";
 const profile = () => {
   const { address, isConnected, isDisconnected } = useAccount();
   const admin = "0x8b65E3846BDecfD20b3a767A5C9C526B63dE6212";
   const [account, setaccount] = useState("");
   const [balanceToken, setbalanceToken] = useState();
+
   useEffect(() => {
     if (address) {
       setaccount(address);
     }
     if (account) {
-      getBalance();
+      tokenBalanceofUser();
     }
   }, [account]);
 
-  const getBalance = async () => {
-    const balance = await contractInstance.methods.balanceOf(account).call();
+  const tokenBalanceofUser = async () => {
+    const balance = await getBalance(account);
     setbalanceToken(balance);
   };
 
@@ -42,12 +42,14 @@ const profile = () => {
       {admin !== account ? (
         console.log("User Account")
       ) : (
-        <button
-          onClick={sendErcToken}
-          className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-        >
-          transfer
-        </button>
+        <>
+          <button
+            onClick={bulkTransfer}
+            className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            transfer0
+          </button>
+        </>
       )}
     </>
   );
