@@ -2,15 +2,15 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useAccount } from "wagmi";
 import { getBalance, sendErcToken, bulkTransfer } from "./utils/Interact";
-const profile = () => {
+const Profile = () => {
   const { address, isConnected, isDisconnected } = useAccount();
   const admin = "0x8b65E3846BDecfD20b3a767A5C9C526B63dE6212";
-  const [account, setaccount] = useState("");
-  const [balanceToken, setbalanceToken] = useState();
+  const [account, setAccount] = useState("");
+  const [balanceToken, setBalanceToken] = useState();
 
   useEffect(() => {
     if (address) {
-      setaccount(address);
+      setAccount(address);
     }
     if (account) {
       tokenBalanceofUser();
@@ -19,7 +19,7 @@ const profile = () => {
 
   const tokenBalanceofUser = async () => {
     const balance = await getBalance(account);
-    setbalanceToken(balance);
+    setBalanceToken(balance);
   };
 
   return (
@@ -55,4 +55,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;
