@@ -1,7 +1,12 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Head from "next/head";
+import { useAccount } from "wagmi";
 
 export default function Home() {
+  const { address, isConnecting, isDisconnected } = useAccount()
+  if(!isDisconnected && !isConnecting) {
+fetch("http://localhost:3000/api/users/createUser?name=Anon&ethAdress=" + address);
+  }
   return (
     <div>
       <Head>

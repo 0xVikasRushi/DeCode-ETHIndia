@@ -14,6 +14,11 @@ export default async function createUser(
   const client = await clientPromise;
   const db = client.db("decode");
   const collection = db.collection("users");
+  let exists = (await collection.findOne({ ethAdress })) == null ? false : true;
+  if (exists) {
+    res.json({ status: "OK" });
+    return;
+  }
   await collection.insert({
     name,
     ethAdress,

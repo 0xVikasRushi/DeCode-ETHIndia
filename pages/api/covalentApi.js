@@ -1,5 +1,5 @@
 const covalent_apiKey = process.env.NEXT_PUBLIC_COVALENT_API;
-function getLeaderboard() {
+async function getLeaderboard() {
   let Leaderboard = [];
   const board = async () => {
     const holder_url = `https://api.covalenthq.com/v1/5/tokens/0x4d313b8047Bbf71347cC66f1eB27A8Bae5568b38/token_holders/?key=${covalent_apiKey}`;
@@ -19,8 +19,9 @@ function getLeaderboard() {
         balance,
       });
     }
+    return Leaderboard;
   };
-  board();
+  await board();
   return Leaderboard;
 }
 
