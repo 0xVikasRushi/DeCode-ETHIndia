@@ -7,7 +7,6 @@ import "@uiw/react-textarea-code-editor/dist.css";
 
 const CodeEditor = dynamic(() => import("@uiw/react-textarea-code-editor").then((mod) => mod.default), { ssr: false });
 
-
 function makeTitle(probNameSlug: string) {
   // https://stackoverflow.com/a/8980902/13460650
   if (!probNameSlug) return "";
@@ -22,11 +21,10 @@ const Problem = () => {
 
   const [code, setCode] = useState(`#include <iostream>\nusing namespace std;\n\nint main() {\n    \n    return 0;\n}`);
 
-
   const data = {
     title: makeTitle(title),
-    difficulty: "Easy",
-    statement: "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\nYou can return the answer in any order.",
+    statement:
+      "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\nYou can return the answer in any order.",
     examples: [
       { input: "nums = [2,7,11,15], target = 9", output: "[0,1]", explanation: "Because nums[0] + nums[1] == 9, we return [0, 1]." },
       { input: "nums = [3,2,4], target = 6", output: "[1,2]" },
@@ -99,7 +97,11 @@ const Problem = () => {
           }}
         />
       </div>
-      <button type="button">Submit</button>
+      <div className="flex justify-end">
+        <button type="button" className="py-2 px-6 rounded shadow-md bg-blue-500 hover:opacity-80 active:opacity-70">
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

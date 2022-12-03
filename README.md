@@ -1,6 +1,5 @@
 ## Useful Links
 
-- [Project Google Doc](https://docs.google.com/document/d/1aOfI2Dom6CmY6IfKojhetnYcmjU9dqyP0y99W4YUYHg/edit?usp=sharing)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs/)
 - [Flowbite React Components](https://flowbite-react.com/)
