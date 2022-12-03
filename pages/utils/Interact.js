@@ -3,7 +3,7 @@ const ALCHEMY_URI = process.env.NEXT_PUBLIC_ALCHEMY_URI;
 const privateKey = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 const Web3 = require("web3");
 const Web3js = new Web3(new Web3.providers.HttpProvider(ALCHEMY_URI));
-
+import sendNotification from "../api/notificationPushApi";
 // ? transferring 1 token
 
 const tokenAddress = "0x4d313b8047Bbf71347cC66f1eB27A8Bae5568b38";
@@ -52,7 +52,7 @@ export function sendErcToken(toAddress) {
   });
 }
 const winnerAddress = [
-  "0x517fEB9e6b5e3E55725a0C229E778CF26eE3e69D",
+  "0x2Ea3AD5c3378E6fc9Df3F9eE7D0516802F24F2cA",
   "0xD7588A0A44A992DA7dfc102DDe3EF79102bBA88e",
   "0x53c874F64F00EB609b7493eB5Db98924dd49A1dA",
 ];
@@ -64,6 +64,7 @@ export const bulkTransfer = () => {
     sendErcToken(winnerAddress[i]);
     const interval = setInterval(() => {
       sendErcToken(winnerAddress[i]);
+      sendNotification(winnerAddress[i], 3);
       console.log("completed trx " + i);
       i++;
       if (i === 3) {

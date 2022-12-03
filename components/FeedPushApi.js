@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NotificationItem, chainNameType } from "@pushprotocol/uiweb";
 import * as PushAPI from "@pushprotocol/restapi";
 import * as ethers from "ethers";
+
 const FeedPushApi = () => {
   const [notifications, setnotifications] = useState([]);
   useEffect(() => {
