@@ -11,6 +11,7 @@
   "dependencies": {
     "@alch/alchemy-web3": "^1.4.7",
     "@pushprotocol/restapi": "^0.2.2",
+    "@pushprotocol/uiweb": "^0.2.3",
     "@rainbow-me/rainbowkit": "^0.8.0",
     "@thirdweb-dev/react": "^3.6.2",
     "@types/node": "18.11.9",

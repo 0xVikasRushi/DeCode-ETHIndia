@@ -1,6 +1,7 @@
 import Head from "next/head";
 import LeaderBoard from "./../components/LeaderBoard";
-import sendNotification from "./../pages/api/pushApi";
+import sendNotification from "./api/notificationPushApi";
+import feedInfo from "../components/FeedPushApi";
 const Contests = () => {
   return (
     <div>
@@ -8,7 +9,16 @@ const Contests = () => {
         <title>Contests - DeCode</title>
       </Head>
       {/* <LeaderBoard /> */}
-      <button onClick={sendNotification}>Notification</button>
+      <div>
+        <button
+         onClick={}
+        >
+          sendNotification
+        </button>
+      </div>
+      <button onClick={feedInfo} className="text-slate-50">
+        feedConsole
+      </button>
     </div>
   );
 };

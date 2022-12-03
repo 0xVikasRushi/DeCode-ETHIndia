@@ -5,23 +5,23 @@ const PK = process.env.NEXT_PUBLIC_PRIVATE_KEY; // channel private key
 const Pkey = `0x${PK}`;
 const signer = new ethers.Wallet(Pkey);
 
-const sendNotification = async () => {
+const sendNotification = async (address, Reward) => {
   try {
     const apiResponse = await PushAPI.payloads.sendNotification({
       signer,
       type: 3, // target
       identityType: 2, // direct payload
       notification: {
-        title: `Reward Recieved`,
-        body: `Congrats you have won!`,
+        title: `DeCode Contest Reward Recieved`,
+        body: `Congrats you have won ${Reward}`,
       },
       payload: {
         title: `Decode`,
-        body: `sample msg body`,
+        body: ``,
         cta: "",
         img: "",
       },
-      recipients: "eip155:5:0x2Ea3AD5c3378E6fc9Df3F9eE7D0516802F24F2cA", // recipient address
+      recipients: `eip155:5:${address}`, // recipient address
       channel: "eip155:5:0x8b65E3846BDecfD20b3a767A5C9C526B63dE6212", // your channel address
       env: "staging",
     });
