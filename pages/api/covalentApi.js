@@ -7,7 +7,7 @@ async function getLeaderboard() {
     const res = await fetch(holder_url);
     const resData = await res.json();
 
-    // ? getting top LeaderBoard for contest
+    // ! getting top LeaderBoard for contest
     const arr = resData.data.items;
     console.log(arr);
 
