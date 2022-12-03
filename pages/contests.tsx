@@ -1,20 +1,24 @@
 import Head from "next/head";
+import LeaderBoard from "./../components/LeaderBoard";
+import sendNotification from "./api/notificationPushApi";
+import feedInfo from "../components/FeedPushApi";
 const Contests = () => {
   return (
     <div>
       <Head>
         <title>Contests - DeCode</title>
       </Head>
-      <table>
-        <tr>
-          <td>Name</td>
-          <td>Start time</td>
-          <td>End time</td>
-          <td>Duration</td>
-          <td>Starts in</td>
-          <td>Starts in</td>
-        </tr>
-      </table>
+      {/* <LeaderBoard /> */}
+      <div>
+        <button
+         onClick={}
+        >
+          sendNotification
+        </button>
+      </div>
+      <button onClick={feedInfo} className="text-slate-50">
+        feedConsole
+      </button>
     </div>
   );
 };

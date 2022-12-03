@@ -1,7 +1,15 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Head from "next/head";
-
+import { useAccount } from "wagmi";
+import FeedPushApi from "./../components/FeedPushApi";
 export default function Home() {
+  const { address, isConnecting, isDisconnected } = useAccount();
+  if (!isDisconnected && !isConnecting) {
+    fetch(
+      "http://localhost:3000/api/users/createUser?name=Anon&ethAdress=" +
+        address
+    );
+  }
   return (
     <div>
       <Head>
@@ -36,6 +44,7 @@ export default function Home() {
                 </div>
                 <ConnectButton />
               </nav>
+              <FeedPushApi />
             </div>
             <div className="px-6 py-32 sm:px-14 xl:px-40">
               <div className="flex flex-col items-center lg:flex-row lg:items-start lg:justify-between">
