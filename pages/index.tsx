@@ -1,6 +1,5 @@
-import Head from "next/head";
-import Navbar from "../components/Navbar";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Head from "next/head";
 
 export default function Home() {
   return (

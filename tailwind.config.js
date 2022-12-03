@@ -7,6 +7,11 @@ module.exports = {
     "./public/**/*.html",
   ],
   theme: {
+    screens: {
+      'lc-md': '600px',
+      'lc-lg': '840px',
+      'lc-xl': '1200px',
+    },
     extend: {
       spacing : {
         18 : '4.5rem',
