@@ -4,16 +4,13 @@ const LeaderBoard = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-  getLeaderboard().then((dat) => {
-    setData(dat); 
-    setLoading(false);
-  })
-
-
-
+    getLeaderboard().then((dat) => {
+      setData(dat);
+      setLoading(false);
+    });
   }, [loading]);
   console.log(data);
-  return !loading?  (
+  return !loading ? (
     <div>
       <div className="overflow-x-auto relative">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -31,25 +28,24 @@ const LeaderBoard = () => {
             </tr>
           </thead>
           <tbody>
-             {data.map((ele) => {
+            {data.map((ele) => {
               return (
-                <tr key={ele.address}className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th
-                    scope="row"
-                    className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
+                <tr key={ele.address} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     name
                   </th>
                   <td className="py-4 px-6">{ele.address}</td>
                   <td className="py-4 px-6">{ele.balance}</td>
                 </tr>
               );
-            })} 
+            })}
           </tbody>
         </table>
       </div>
     </div>
-  ) : <div>loading..</div>;
+  ) : (
+    <div>loading..</div>
+  );
 };
 
 export default LeaderBoard;
