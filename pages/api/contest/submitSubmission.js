@@ -18,6 +18,9 @@ export default async function submitSubmission(
   const client = await clientPromise;
   const db = client.db("decode");
   const collection = db.collection("contests");
+  console.log("l==cn");
+  console.log(contestName, questionIndex);
+  contestName = "testContest";
   let currentContest = await collection.findOne({ name: contestName });
   let expectedOuput =
     currentContest["questions"][questionIndex]["expectedOutput"];
