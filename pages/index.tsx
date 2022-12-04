@@ -3,6 +3,7 @@ import Router from "next/router";
 import Head from "next/head";
 import { useAccount } from "wagmi";
 import FeedPushApi from "./../components/FeedPushApi";
+
 export default function Home() {
   const { address, isConnecting, isDisconnected } = useAccount();
   if (!isDisconnected && !isConnecting) {
@@ -16,6 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
+        <FeedPushApi />
         {/* bg-primary */}
         <div className="w-full min-h-screen bg-[#111827] font-inter text-grey-300">
           <section>
@@ -61,7 +63,7 @@ export default function Home() {
                       Get Started
                     </button>
                   </div>
-                  <div className="pt-20">
+                  {/* <div className="pt-20">
                     <div className="flex flex-col items-center space-y-2 text-gray-800 md:space-x-10 md:space-y-0 md:flex-row">
                       <span className="text-sm">Support</span>
 
@@ -102,7 +104,7 @@ export default function Home() {
                         </a>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="hidden w-full pt-10 md:justify-center md:flex lg:block lg:pl-20 lg:pt-0">
                   <img src="./blockchain.svg" alt="blockchain" />

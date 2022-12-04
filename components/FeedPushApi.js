@@ -5,47 +5,31 @@ import * as ethers from "ethers";
 
 const FeedPushApi = () => {
   const [notifications, setnotifications] = useState([]);
-  useEffect(() => {
-    PushAPI.user
-      .getFeeds({
-        user: "eip155:5:0x2Ea3AD5c3378E6fc9Df3F9eE7D0516802F24F2cA", // user address in CAIP
-        env: "staging",
-      })
-      .then((n) => console.log(n));
-  }, []);
+
+  const infoNotifiy = () => {
+    // for (let index = 1; index < notifications.length; index++) {
+    //   const title = notifications[index].title;
+    //   const message = notifications[index].message;
+    //   alertinfo.push({
+    //     title,
+    //     message,
+    //   });
+    // }
+    useEffect(() => {
+      PushAPI.user
+        .getFeeds({
+          user: "eip155:5:0x2Ea3AD5c3378E6fc9Df3F9eE7D0516802F24F2cA", // user address in CAIP
+          env: "staging",
+        })
+        .then((n) => console.log(n))
+        .then((n) => setnotifications(n));
+    }, []);
+  };
 
   return (
     <div>
       <div>
-        {notifications.map((oneNotification, i) => {
-          const {
-            cta,
-            title,
-            message,
-            app,
-            icon,
-            image,
-            url,
-            blockchain,
-            notification,
-          } = oneNotification;
-
-          return (
-            <NotificationItem
-              key={i} // any unique id
-              notificationTitle={title}
-              notificationBody={message}
-              cta={cta}
-              app={app}
-              icon={icon}
-              image={image}
-              url={url}
-              // theme={theme}
-              chainName={blockchain}
-              // chainName={blockchain as chainNameType} // if using Typescript
-            />
-          );
-        })}
+       
       </div>
     </div>
   );
