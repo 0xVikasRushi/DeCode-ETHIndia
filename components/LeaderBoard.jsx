@@ -17,9 +17,6 @@ const LeaderBoard = () => {
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="py-3 px-6">
-                Name
-              </th>
-              <th scope="col" className="py-3 px-6">
                 Address
               </th>
               <th scope="col" className="py-3 px-6">
@@ -28,12 +25,10 @@ const LeaderBoard = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((ele) => {
+            {data.map((ele, i) => {
+              if (i <= 1) return <></>;
               return (
                 <tr key={ele.address} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    name
-                  </th>
                   <td className="py-4 px-6">{ele.address}</td>
                   <td className="py-4 px-6">{ele.balance}</td>
                 </tr>
